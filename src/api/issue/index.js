@@ -12,6 +12,7 @@ const { title, description, user, priority, status, assignedTo } = schema.tree
  * @api {post} /issues Create issue
  * @apiName CreateIssue
  * @apiGroup Issue
+ * @apiDescription Creates a new issue and immediately assigns it to the first available agent, if any are available
  * @apiParam {string} title Issue's title.
  * @apiParam {string} description Issue's description.
  * @apiParam {string} user Id of user reporting issue
@@ -54,11 +55,13 @@ router.get('/:id',
  * @api {put} /issues/:id Update issue
  * @apiName UpdateIssue
  * @apiGroup Issue
- * @apiParam title Issue's title.
- * @apiParam description Issue's description.
- * @apiParam priority Issue's priority.
- * @apiParam status Issue's status.
- * @apiParam assignedTo Issue's assignedTo.
+ * @apiDescription Updates an issue, if the issue is closed the assigned agent is assigned to the next open issue, if any
+ * @apiParam {string} title Issue's title.
+ * @apiParam {string} description Issue's description.
+ * @apiParam {string} user Id of user reporting issue
+ * @apiParam {string="low","medium","high"} priority Issue's priority.
+ * @apiParam {string="open","closed"} status  Issue's status.
+ * @apiParam {string} [assignedTo] Id of the agent the issue is assigned to.
  * @apiSuccess {Object} issue Issue's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Issue not found.

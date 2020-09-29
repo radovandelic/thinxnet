@@ -22,7 +22,7 @@
 
 ## Create agent
 
-
+<p>Creates an agent and immediately assigns him to the first open issue if any</p>
 
 	POST /agents
 
@@ -31,10 +31,10 @@
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| name			| 			|  <p>Agent's name.</p>							|
-| email			| 			|  <p>Agent's email.</p>							|
-| status			| 			|  <p>Agent's status.</p>							|
-| issueId			| 			|  <p>Agent's issueId.</p>							|
+| name			| string			|  <p>Agent's name.</p>							|
+| email			| string			|  <p>Agent's email.</p>							|
+| status			| string			|  <p>Agent's status.</p>							|
+| issueId			| string			|  <p>Id of issue assigned to Agent (if any)</p>							|
 
 ## Delete agent
 
@@ -69,7 +69,7 @@
 
 ## Update agent
 
-
+<p>Updates an agent and if his status is &quot;available&quot;, he is immediately assigned to the first open issue</p>
 
 	PUT /agents/:id
 
@@ -78,16 +78,16 @@
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| name			| 			|  <p>Agent's name.</p>							|
-| email			| 			|  <p>Agent's email.</p>							|
-| status			| 			|  <p>Agent's status.</p>							|
-| issueId			| 			|  <p>Agent's issueId.</p>							|
+| name			| string			|  <p>Agent's name.</p>							|
+| email			| string			|  <p>Agent's email.</p>							|
+| status			| string			|  <p>Agent's status.</p>							|
+| issueId			| string			|  <p>Id of issue assigned to Agent (if any)</p>							|
 
 # Issue
 
 ## Create issue
 
-
+<p>Creates a new issue and immediately assigns it to the first available agent, if any are available</p>
 
 	POST /issues
 
@@ -136,7 +136,7 @@
 
 ## Update issue
 
-
+<p>Updates an issue, if the issue is closed the assigned agent is assigned to the next open issue, if any</p>
 
 	PUT /issues/:id
 
@@ -145,10 +145,11 @@
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| title			| 			|  <p>Issue's title.</p>							|
-| description			| 			|  <p>Issue's description.</p>							|
-| priority			| 			|  <p>Issue's priority.</p>							|
-| status			| 			|  <p>Issue's status.</p>							|
-| assignedTo			| 			|  <p>Issue's assignedTo.</p>							|
+| title			| string			|  <p>Issue's title.</p>							|
+| description			| string			|  <p>Issue's description.</p>							|
+| user			| string			|  <p>Id of user reporting issue</p>							|
+| priority			| string			|  <p>Issue's priority.</p>							|
+| status			| string			|  <p>Issue's status.</p>							|
+| assignedTo			| string			| **optional** <p>Id of the agent the issue is assigned to.</p>							|
 
 

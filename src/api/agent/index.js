@@ -12,6 +12,7 @@ const { name, email, status, issueId } = schema.tree
  * @api {post} /agents Create agent
  * @apiName CreateAgent
  * @apiGroup Agent
+ * @apiDescription Creates an agent and immediately assigns him to the first open issue if any
  * @apiParam {string} name Agent's name.
  * @apiParam {string} email Agent's email.
  * @apiParam {string="offline","available","assigned"} status Agent's status.
@@ -52,10 +53,11 @@ router.get('/:id',
  * @api {put} /agents/:id Update agent
  * @apiName UpdateAgent
  * @apiGroup Agent
- * @apiParam name Agent's name.
- * @apiParam email Agent's email.
- * @apiParam status Agent's status.
- * @apiParam issueId Agent's issueId.
+ * @apiDescription Updates an agent and if his status is "available", he is immediately assigned to the first open issue
+ * @apiParam {string} name Agent's name.
+ * @apiParam {string} email Agent's email.
+ * @apiParam {string="offline","available","assigned"} status Agent's status.
+ * @apiParam {string} issueId Id of issue assigned to Agent (if any)
  * @apiSuccess {Object} agent Agent's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Agent not found.

@@ -17,6 +17,8 @@ const assignIssue = async issue => {
   return issue
 }
 
+const assignIssueIfUnassigned = issue => issue && !issue.assignedTo ? assignIssue(issue) : issue
+
 const assignNextIssue = async issue => {
   const agent = await Agent.findById(issue.assignedTo)
   const openIssues = await Issue.find({ status: 'open', assignedTo: null })
@@ -42,7 +44,7 @@ const assignNextIssueIfClosed = issue => issue && issue.status === 'closed' ? as
 
 export const create = ({ bodymen: { body } }, res, next) =>
   Issue.create(body)
-    .then(assignIssue)
+    .then(assignIssueIfUnassigned)
     .then((issue) => issue.view(true))
     .then(success(res, 201))
     .catch(next)
