@@ -1,13 +1,13 @@
 import { success, notFound } from '../../services/response/'
-import { Issue } from '.'
-import { Agent } from '../agent'
+import Issue from './model'
+import Agent from '../agent/model'
 
 const assignIssue = async issue => {
   const availableAgents = await Agent.find({ status: 'available' })
   if (availableAgents.length) {
     // assign issue to first available agent if any agent is available
     const firstAvailableAgent = availableAgents[0]
-    issue.assignedTo = availableAgents[0].id
+    issue.assignedTo = firstAvailableAgent.id
     await issue.save()
 
     firstAvailableAgent.issueId = issue.id
@@ -17,7 +17,7 @@ const assignIssue = async issue => {
   return issue
 }
 
-const assignIssueIfUnassigned = issue => issue && !issue.assignedTo ? assignIssue(issue) : issue
+export const assignIssueIfUnassigned = issue => issue && !issue.assignedTo ? assignIssue(issue) : issue
 
 const assignNextIssue = async issue => {
   const agent = await Agent.findById(issue.assignedTo)
