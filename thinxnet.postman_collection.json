@@ -1,0 +1,183 @@
+{
+	"info": {
+		"name": "thinxnet",
+		"_postman_id": "1f2e5f83-9c47-474b-b471-4099dccda692",
+		"description": "This is the Postman collection for the thinxnet coding challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create agent",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n    \"name\": \"testagent\",\n    \"email\": \"testagent@byom.de\",\n    \"status\": \"available\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/agents",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"agents"
+					]
+				},
+				"description": "Creates a new agent"
+			},
+			"response": []
+		},
+		{
+			"name": "update agent",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n    \"name\": \"testagent\",\n    \"email\": \"testagent@byom.de\",\n    \"status\": \"available\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/agents/5f735670db9bc776e48a1f3b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"agents",
+						"5f735670db9bc776e48a1f3b"
+					]
+				},
+				"description": "Creates a new agent"
+			},
+			"response": []
+		},
+		{
+			"name": "get agent",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n    \"name\": \"testagent\",\n    \"email\": \"testagent@byom.de\",\n    \"status\": \"available\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/agents/5f735670db9bc776e48a1f3b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"agents",
+						"5f735670db9bc776e48a1f3b"
+					]
+				},
+				"description": "Creates a new agent"
+			},
+			"response": []
+		},
+		{
+			"name": "create issue",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"test issue\",\n    \"description\": \"something isn't working right\",\n    \"user\": \"12345\",\n    \"status\": \"open\",\n    \"priority\": \"high\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/issues",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"issues"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "update issue",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"test issue\",\n    \"description\": \"something isn't working right\",\n    \"status\": \"closed\",\n    \"assignedTo\": \"5f735670db9bc776e48a1f3b\",\n    \"priority\": \"high\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/issues/5f7356b1db9bc776e48a1f3c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"issues",
+						"5f7356b1db9bc776e48a1f3c"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get issue",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"test issue\",\n    \"description\": \"something isn't working right\",\n    \"status\": \"closed\",\n    \"priority\": \"high\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/issues/5f7356b1db9bc776e48a1f3c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"issues",
+						"5f7356b1db9bc776e48a1f3c"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
