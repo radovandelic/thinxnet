@@ -1,6 +1,11 @@
 import { Router } from 'express'
+import agent from './agent'
+import issue from './issue'
 
 const router = new Router()
+
+router.use('/agents', agent)
+router.use('/issues', issue)
 
 /**
  * @apiDefine master Master access only
