@@ -25,12 +25,14 @@ First, you will need to install and run [MongoDB](https://www.mongodb.com/) in a
 $ mongod
 ```
 
-Then, create a .env file from .env.example with your mongodb url and run the server in development mode.
+Then, create a `.env` file from `.env.example` with your mongodb url and run the server in development mode.
 
 ```bash
 $ npm run dev
 Express server listening on http://0.0.0.0:9000, in development mode
 ```
+
+Note: there is a postman collection you can use for local testing `thinxnet.postman_collection.json`
 
 
 ## Directory structure
